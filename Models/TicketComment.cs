@@ -7,7 +7,7 @@ namespace BugTrackerDemo.Models
         public int Id { get; set; }
 
         [DisplayName("Member Comment")]
-        public string? Comment { get; set; }
+        public string Comment { get; set; }
 
         [DisplayName("Date")]
         public DateTimeOffset Created { get; set; }

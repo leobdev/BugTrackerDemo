@@ -8,6 +8,6 @@ namespace BugTrackerDemo.Models
         public int Id { get; set; } 
 
         [DisplayName("Status Name")]
-        public string? Name { get; set; }   
+        public string Name { get; set; }   
     }
 }

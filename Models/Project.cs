@@ -17,7 +17,7 @@ namespace BugTrackerDemo.Models
         public string Name { get; set; }
 
         [DisplayName("Description")]
-        public string? Description { get; set; }
+        public string Description { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayName("Start Date")]
@@ -53,7 +53,7 @@ namespace BugTrackerDemo.Models
 
         public virtual ICollection<BTUser> Members { get; set; } = new HashSet<BTUser>();
 
-        public virtual ICollection<Ticket> Ticket { get; set; } = new HashSet<Ticket>();
+        public virtual ICollection<Ticket> Tickets { get; set; } = new HashSet<Ticket>();
 
     }
 }

@@ -8,7 +8,7 @@ namespace BugTrackerDemo.Models
 
 
         [DisplayName("Type Name")]
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
 
     }
