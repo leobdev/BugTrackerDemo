@@ -7,7 +7,7 @@ namespace BugTrackerDemo.Models
 
         public int Id { get; set; } 
 
-        [DisplayName("Priority Name")]
-        public string? Name { get; set; }
+        [DisplayName("Priority")]
+        public string Name { get; set; }
     }
 }

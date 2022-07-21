@@ -101,7 +101,7 @@ namespace BugTrackerDemo.Data
             try
             {
                 IList<Company> defaultcompanies = new List<Company>() {
-                    new Company() { Name = "Company1", Description="This is default Company 1" },
+                    new Company() { Name = "DunderMifflin", Description="Paper and Software Company" },
                     new Company() { Name = "Company2", Description="This is default Company 2" },
                     new Company() { Name = "Company3", Description="This is default Company 3" },
                     new Company() { Name = "Company4", Description="This is default Company 4" },
@@ -113,7 +113,7 @@ namespace BugTrackerDemo.Data
                 await context.SaveChangesAsync();
 
                 //Get company Ids
-                company1Id = context.Companies.FirstOrDefault(p => p.Name == "Company1").Id;
+                company1Id = context.Companies.FirstOrDefault(p => p.Name == "DunderMifflin").Id;
                 company2Id = context.Companies.FirstOrDefault(p => p.Name == "Company2").Id;
                 company3Id = context.Companies.FirstOrDefault(p => p.Name == "Company3").Id;
                 company4Id = context.Companies.FirstOrDefault(p => p.Name == "Company4").Id;
@@ -172,17 +172,17 @@ namespace BugTrackerDemo.Data
                          CompanyId = company1Id,
                          Name = "Build a Personal Porfolio",
                          Description="Single page html, css & javascript page.  Serves as a landing page for candidates and contains a bio and links to all applications and challenges." ,
-                         StartDate = new DateTime(2021,8,20),
-                         EndDate = new DateTime(2021,8,20).AddMonths(1),
+                         StartDate = new DateTime(2022,1,20),
+                         EndDate = new DateTime(2022,8,20).AddMonths(12),
                          ProjectPriorityId = priorityLow
                      },
                      new Project()
                      {
-                         CompanyId = company2Id,
+                         CompanyId = company1Id,
                          Name = "Build a supplemental Blog Web Application",
                          Description="Candidate's custom built web application using .Net Core with MVC, a postgres database and hosted in a heroku container.  The app is designed for the candidate to create, update and maintain a live blog site.",
-                         StartDate = new DateTime(2021,8,20),
-                         EndDate = new DateTime(2021,8,20).AddMonths(4),
+                         StartDate = new DateTime(2022,2,20),
+                         EndDate = new DateTime(2022,8,20).AddMonths(12),
                          ProjectPriorityId = priorityMedium
                      },
                      new Project()
@@ -190,17 +190,17 @@ namespace BugTrackerDemo.Data
                          CompanyId = company1Id,
                          Name = "Build an Issue Tracking Web Application",
                          Description="A custom designed .Net Core application with postgres database.  The application is a multi tennent application designed to track issue tickets' progress.  Implemented with identity and user roles, Tickets are maintained in projects which are maintained by users in the role of projectmanager.  Each project has a team and team members.",
-                         StartDate = new DateTime(2021,8,20),
-                         EndDate = new DateTime(2021,8,20).AddMonths(6),
+                         StartDate = new DateTime(2022,3,20),
+                         EndDate = new DateTime(2022,8,20).AddMonths(12),
                          ProjectPriorityId = priorityHigh
                      },
                      new Project()
                      {
-                         CompanyId = company2Id,
+                         CompanyId = company1Id,
                          Name = "Build an Address Book Web Application",
                          Description="A custom designed .Net Core application with postgres database.  This is an application to serve as a rolodex of contacts for a given user..",
-                         StartDate = new DateTime(2021,8,20),
-                         EndDate = new DateTime(2021,8,20).AddMonths(2),
+                         StartDate = new DateTime(2022,3,20),
+                         EndDate = new DateTime(2022,8,20).AddMonths(12),
                          ProjectPriorityId = priorityLow
                      },
                     new Project()
@@ -208,8 +208,8 @@ namespace BugTrackerDemo.Data
                          CompanyId = company1Id,
                          Name = "Build a Movie Information Web Application",
                          Description="A custom designed .Net Core application with postgres database.  An API based application allows users to input and import movie posters and details including cast and crew information.",
-                         StartDate = new DateTime(2021,8,20),
-                         EndDate = new DateTime(2021,8,20).AddMonths(3),
+                         StartDate = new DateTime(2022,4,20),
+                         EndDate = new DateTime(2022,8,20).AddMonths(12),
                          ProjectPriorityId = priorityHigh
                      }
                 };
@@ -235,10 +235,10 @@ namespace BugTrackerDemo.Data
             //Seed Default Admin User
             var defaultUser = new BTUser
             {
-                UserName = "btadmin1@bugtracker.com",
-                Email = "btadmin1@bugtracker.com",
-                FirstName = "Bill",
-                LastName = "Appuser",
+                UserName = "btadmin1@dundermifflin.com",
+                Email = "btadmin1@dundermifflin.com",
+                FirstName = "David",
+                LastName = "Wallace",
                 EmailConfirmed = true,
                 CompanyId = company1Id
             };
@@ -263,12 +263,12 @@ namespace BugTrackerDemo.Data
             //Seed Default Admin User
             defaultUser = new BTUser
             {
-                UserName = "btadmin2@bugtracker.com",
-                Email = "btadmin2@bugtracker.com",
+                UserName = "btadmin2@dundermifflin.com",
+                Email = "btadmin2@dundermifflin.com",
                 FirstName = "Steve",
                 LastName = "Appuser",
                 EmailConfirmed = true,
-                CompanyId = company2Id
+                CompanyId = company1Id
             };
             try
             {
@@ -292,10 +292,10 @@ namespace BugTrackerDemo.Data
             //Seed Default ProjectManager1 User
             defaultUser = new BTUser
             {
-                UserName = "ProjectManager1@bugtracker.com",
-                Email = "ProjectManager1@bugtracker.com",
-                FirstName = "John",
-                LastName = "Appuser",
+                UserName = "ProjectManager1@dundermifflin.com",
+                Email = "ProjectManager1@dundermifflin.com",
+                FirstName = "Michael",
+                LastName = "Scott",
                 EmailConfirmed = true,
                 CompanyId = company1Id
             };
@@ -321,12 +321,12 @@ namespace BugTrackerDemo.Data
             //Seed Default ProjectManager2 User
             defaultUser = new BTUser
             {
-                UserName = "ProjectManager2@bugtracker.com",
-                Email = "ProjectManager2@bugtracker.com",
-                FirstName = "Jane",
-                LastName = "Appuser",
+                UserName = "ProjectManager2@dundermifflin.com",
+                Email = "ProjectManager2@dundermifflin.com",
+                FirstName = "Dwight",
+                LastName = "Schrute",
                 EmailConfirmed = true,
-                CompanyId = company2Id
+                CompanyId = company1Id
             };
             try
             {
@@ -350,10 +350,10 @@ namespace BugTrackerDemo.Data
             //Seed Default Developer1 User
             defaultUser = new BTUser
             {
-                UserName = "Developer1@bugtracker.com",
-                Email = "Developer1@bugtracker.com",
-                FirstName = "Elon",
-                LastName = "Appuser",
+                UserName = "Developer1@dundermifflin.com",
+                Email = "Developer1@dundermifflin.com",
+                FirstName = "Pam",
+                LastName = "Beesly",
                 EmailConfirmed = true,
                 CompanyId = company1Id
             };
@@ -379,12 +379,12 @@ namespace BugTrackerDemo.Data
             //Seed Default Developer2 User
             defaultUser = new BTUser
             {
-                UserName = "Developer2@bugtracker.com",
-                Email = "Developer2@bugtracker.com",
-                FirstName = "James",
-                LastName = "Appuser",
+                UserName = "Developer2@dundermifflin.com",
+                Email = "Developer2@dundermifflin.com",
+                FirstName = "Jim",
+                LastName = "Halpert",
                 EmailConfirmed = true,
-                CompanyId = company2Id
+                CompanyId = company1Id
             };
             try
             {
@@ -408,10 +408,10 @@ namespace BugTrackerDemo.Data
             //Seed Default Developer3 User
             defaultUser = new BTUser
             {
-                UserName = "Developer3@bugtracker.com",
-                Email = "Developer3@bugtracker.com",
-                FirstName = "Natasha",
-                LastName = "Appuser",
+                UserName = "Developer3@dundermifflin.com",
+                Email = "Developer3@dundermifflin.com",
+                FirstName = "Kevin",
+                LastName = "Malone",
                 EmailConfirmed = true,
                 CompanyId = company1Id
             };
@@ -437,12 +437,12 @@ namespace BugTrackerDemo.Data
             //Seed Default Developer4 User
             defaultUser = new BTUser
             {
-                UserName = "Developer4@bugtracker.com",
-                Email = "Developer4@bugtracker.com",
-                FirstName = "Carol",
-                LastName = "Appuser",
+                UserName = "Developer4@dundermifflin.com",
+                Email = "Developer4@dundermifflin.com",
+                FirstName = "Toby",
+                LastName = "Flenderson",
                 EmailConfirmed = true,
-                CompanyId = company2Id
+                CompanyId = company1Id
             };
             try
             {
@@ -466,8 +466,8 @@ namespace BugTrackerDemo.Data
             //Seed Default Developer5 User
             defaultUser = new BTUser
             {
-                UserName = "Developer5@bugtracker.com",
-                Email = "Developer5@bugtracker.com",
+                UserName = "Developer5@dundermifflin.com",
+                Email = "Developer5@dundermifflin.com",
                 FirstName = "Tony",
                 LastName = "Appuser",
                 EmailConfirmed = true,
@@ -494,12 +494,12 @@ namespace BugTrackerDemo.Data
             //Seed Default Developer6 User
             defaultUser = new BTUser
             {
-                UserName = "Developer6@bugtracker.com",
-                Email = "Developer6@bugtracker.com",
-                FirstName = "Bruce",
-                LastName = "Appuser",
+                UserName = "Developer6@dundermifflin.com",
+                Email = "Developer6@dundermifflin.com",
+                FirstName = "Kelly",
+                LastName = "Kapoor",
                 EmailConfirmed = true,
-                CompanyId = company2Id
+                CompanyId = company1Id
             };
             try
             {
@@ -522,10 +522,10 @@ namespace BugTrackerDemo.Data
             //Seed Default Submitter1 User
             defaultUser = new BTUser
             {
-                UserName = "Submitter1@bugtracker.com",
-                Email = "Submitter1@bugtracker.com",
-                FirstName = "Scott",
-                LastName = "Appuser",
+                UserName = "Submitter1@dundermifflin.com",
+                Email = "Submitter1@dundermifflin.com",
+                FirstName = "Ryan",
+                LastName = "Howard",
                 EmailConfirmed = true,
                 CompanyId = company1Id
             };
@@ -551,12 +551,12 @@ namespace BugTrackerDemo.Data
             //Seed Default Submitter2 User
             defaultUser = new BTUser
             {
-                UserName = "Submitter2@bugtracker.com",
-                Email = "Submitter2@bugtracker.com",
-                FirstName = "Sue",
-                LastName = "Appuser",
+                UserName = "Submitter2@dundermifflin.com",
+                Email = "Submitter2@dundermifflin.com",
+                FirstName = "Stanley",
+                LastName = "Hudson",
                 EmailConfirmed = true,
-                CompanyId = company2Id
+                CompanyId = company1Id
             };
             try
             {
@@ -583,10 +583,10 @@ namespace BugTrackerDemo.Data
             //Seed Demo Admin User
             var defaultUser = new BTUser
             {
-                UserName = "demoadmin@bugtracker.com",
-                Email = "demoadmin@bugtracker.com",
-                FirstName = "Demo",
-                LastName = "Admin",
+                UserName = "demoadmin@dundermifflin.com",
+                Email = "demoadmin@@dundermifflin.com",
+                FirstName = "David",
+                LastName = "Wallace",
                 EmailConfirmed = true,
                 CompanyId = company1Id
             };
@@ -614,12 +614,12 @@ namespace BugTrackerDemo.Data
             //Seed Demo ProjectManager User
             defaultUser = new BTUser
             {
-                UserName = "demopm@bugtracker.com",
-                Email = "demopm@bugtracker.com",
-                FirstName = "Demo",
-                LastName = "ProjectManager",
+                UserName = "michaelscott@dundermifflin.com",
+                Email = "michaelscott@dundermifflin.com",
+                FirstName = "Michael",
+                LastName = "Scott",
                 EmailConfirmed = true,
-                CompanyId = company2Id
+                CompanyId = company1Id
             };
             try
             {
@@ -644,12 +644,12 @@ namespace BugTrackerDemo.Data
             //Seed Demo Developer User
             defaultUser = new BTUser
             {
-                UserName = "demodev@bugtracker.com",
-                Email = "demodev@bugtracker.com",
-                FirstName = "Demo",
-                LastName = "Developer",
+                UserName = "dwightschrute@dundermifflin.com",
+                Email = "dwightschrute@dundermifflin.com",
+                FirstName = "Dwight",
+                LastName = "Schrute",
                 EmailConfirmed = true,
-                CompanyId = company2Id
+                CompanyId = company1Id
             };
             try
             {
@@ -674,12 +674,12 @@ namespace BugTrackerDemo.Data
             //Seed Demo Submitter User
             defaultUser = new BTUser
             {
-                UserName = "demosub@bugtracker.com",
-                Email = "demosub@bugtracker.com",
-                FirstName = "Demo",
-                LastName = "Submitter",
+                UserName = "pambeesly@dundermifflin.com",
+                Email = "pambeesly@dundermifflin.com",
+                FirstName = "Pam",
+                LastName = "Beesly",
                 EmailConfirmed = true,
-                CompanyId = company2Id
+                CompanyId = company1Id
             };
             try
             {
@@ -704,12 +704,12 @@ namespace BugTrackerDemo.Data
             //Seed Demo New User
             defaultUser = new BTUser
             {
-                UserName = "demonew@bugtracker.com",
-                Email = "demonew@bugtracker.com",
-                FirstName = "Demo",
-                LastName = "NewUser",
+                UserName = "jimhalpert@dundermifflin.com",
+                Email = "jimhalpert@dundermifflin.com",
+                FirstName = "Jim",
+                LastName = "Halpert",
                 EmailConfirmed = true,
-                CompanyId = company2Id
+                CompanyId = company1Id
             };
             try
             {

@@ -1,0 +1,96 @@
+﻿@model IEnumerable<BugTrackerDemo.Models.Ticket>
+@using BugTrackerDemo.Models.Enums
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <h2>Unassigned Tickets</h2>
+            <div class="card-body">
+                <table class="table table-hover table-bordered display" id="ticketPages">
+                    <thead class="">
+                        <tr>
+                            @* Table header *@
+                            <th>Title</th>
+                            <th>Developer</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @* Table body *@
+                        @foreach (var ticket in Model.OrderByDescending(d => d.Created))
+                        {
+                            <tr>
+                                <td><a asp-action="Details" asp-controller="Tickets" asp-route-id="@ticket.Id" style="color:black"><strong>@ticket.Title</strong></a> </td>
+                                <td>
+                                    @if (ticket.DeveloperUserId != null)
+                                    {
+                                        @ticket.DeveloperUser?.FullName
+                                    }
+                                    else
+                                    {
+                                        if (User.IsInRole(nameof(Roles.Admin)) || User.IsInRole(nameof(Roles.ProjectManager)))
+                                        {
+                                            <a class="btn btn-xs btn-info" asp-action="AssignDeveloper" asp-controller="Tickets" asp-route-ticketId="@ticket.Id">Assign Dev</a>
+                                        }
+
+                                    }
+                                </td>
+                                @if (ticket.TicketStatus.Name == "New")
+                                {
+                                    <td><span class="badge-success badge-pill">@ticket.TicketStatus.Name </span></td>
+
+                                }
+                                else
+                                {
+                                    <td><span class="badge-primary badge-pill">@ticket.TicketStatus.Name </span></td>
+                                }
+                                <td><span class="badge-warning badge-pill ">@ticket.TicketPriority.Name </span></td>
+                                <td>@ticket.Created.ToString("MM-dd-yyyy")</td>
+                                <td>
+                                    <a class="btn btn-sm btn-outline-info" asp-action="Details" asp-controller="Tickets" asp-route-id="@ticket.Id">Details</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+<script src="/dist/js/pages/jquery-3.5.1.js"></script>
+<script src="~/dist/js/pages/jquery.dataTables.min.js.js"></script>
+
+
+<script>
+      $(document).ready(function() {
+        $('#ticketPages').DataTable( {
+            "pagingType": "full_numbers",
+            "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+        } );
+    } );
+</script>
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+
+}
+

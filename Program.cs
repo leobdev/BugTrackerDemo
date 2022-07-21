@@ -47,6 +47,7 @@ builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailS
 
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddMvc().AddRazorPagesOptions(options => options.Conventions.AddAreaPageRoute("Identity", "/Account/Login", ""));
 
 var app = builder.Build();
 
@@ -77,9 +78,18 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapDefaultControllerRoute();
+});
+
+
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area=Identity}/{action=/Account/Login}/{id?}"
+    );
+
 app.MapRazorPages();
 
 app.Run();

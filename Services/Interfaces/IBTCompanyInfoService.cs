@@ -5,7 +5,7 @@ namespace BugTrackerDemo.Services.Interfaces
     public interface IBTCompanyInfoService
     {
 
-        public Task<Company> GetCompanyInfoByAdAsync(int? company);
+        public Task<Company> GetCompanyInfoByIdAsync(int? company);
 
         public Task<List<BTUser>> GetAllMembersAsync(int companyId);
 

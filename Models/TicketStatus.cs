@@ -7,7 +7,7 @@ namespace BugTrackerDemo.Models
 
         public int Id { get; set; } 
 
-        [DisplayName("Status Name")]
+        [DisplayName("Status")]
         public string Name { get; set; }   
     }
 }

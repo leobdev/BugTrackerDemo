@@ -13,7 +13,7 @@ namespace BugTrackerDemo.Services
         {
             _context = context;
         }
-        public async Task<List<ProjectPriority>> GetProjectPriorityAsync()
+        public async Task<List<ProjectPriority>> GetProjectPrioritiesAsync()
         {
             try
             {
@@ -26,19 +26,44 @@ namespace BugTrackerDemo.Services
             }
         }
 
-        public Task<List<TicketPriority>> GetTicketPriorityAsync()
+        public async Task<List<TicketPriority>> GetTicketPrioritiesAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _context.TicketPriorities.ToListAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
-        public Task<List<TicketStatus>> GetTicketStatusesAsync()
+        public async Task<List<TicketStatus>> GetTicketStatusesAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _context.TicketStatuses.ToListAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        public Task<List<TicketType>> GetTicketTypesAsync()
+        public async Task<List<TicketType>> GetTicketTypesAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _context.TicketTypes.ToListAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

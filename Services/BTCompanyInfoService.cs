@@ -64,7 +64,7 @@ namespace BugTrackerDemo.Services
             return result;
         }
 
-        public async Task<Company> GetCompanyInfoByAdAsync(int? companyId)
+        public async Task<Company> GetCompanyInfoByIdAsync(int? companyId)
         {
             Company result = new();
 

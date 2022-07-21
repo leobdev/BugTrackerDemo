@@ -28,6 +28,9 @@ namespace BugTrackerDemo.Models
         [DisplayName("Archived")]
         public bool Archived { get; set; }
 
+        [DisplayName("Archived By Project")]
+        public bool ArchivedByProject { get; set; }
+
         [DisplayName("Project")]
         public int ProjectId { get; set; }
 
@@ -60,8 +63,10 @@ namespace BugTrackerDemo.Models
 
         public virtual TicketStatus TicketStatus { get; set; }
 
+        [DisplayName("Ticket Owner")]
         public virtual BTUser OwnerUser { get; set; }
 
+        [DisplayName("Ticket Developer")]
         public virtual BTUser DeveloperUser { get; set; }
 
 

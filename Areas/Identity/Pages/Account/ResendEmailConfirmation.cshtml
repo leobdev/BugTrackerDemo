@@ -1,6 +1,7 @@
 ﻿@page
 @model ResendEmailConfirmationModel
 @{
+     Layout = "/Views/Shared/_LoginLayout.cshtml";
     ViewData["Title"] = "Resend email confirmation";
 }
 
@@ -8,15 +9,17 @@
 <h2>Enter your email.</h2>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col">
         <form method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-floating">
-                <input asp-for="Input.Email" class="form-control" aria-required="true" />
                 <label asp-for="Input.Email" class="form-label"></label>
+                <input asp-for="Input.Email" class="form-control" aria-required="true" />
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
-            <button type="submit" class="w-100 btn btn-lg btn-primary">Resend</button>
+            <br />
+            <button type="submit" class="btn btn-lg btn-primary">Resend</button>
+            <a   asp-page="./Login" class="btn btn-lg btn-secondary">Back to Login Page</a>
         </form>
     </div>
 </div>

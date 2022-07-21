@@ -4,18 +4,42 @@
     ViewData["Title"] = "Log out";
 }
 
-<header>
-    <h1>@ViewData["Title"]</h1>
-    @{
-        if (User.Identity.IsAuthenticated)
-        {
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                <button type="submit" class="nav-link btn btn-link text-dark">Click here to Logout</button>
-            </form>
-        }
-        else
-        {
-            <p>You have successfully logged out of the application.</p>
-        }
-    }
-</header>
+
+
+
+<div id="content" class="main-content">
+    <div class="layout-px-spacing">
+        <div class="row layout-top-spacing">
+
+
+            <div class="container mt-8">
+                <div class="row ">
+                    <div class="col">
+                        <h1>@ViewData["Title"]</h1>
+                        @{
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                                    <button type="submit" class="nav-link btn btn btn-primary ">Click here to Logout</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <p>You have successfully logged out of the application.</p>
+                            }
+                        }
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+

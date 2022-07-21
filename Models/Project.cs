@@ -25,7 +25,7 @@ namespace BugTrackerDemo.Models
 
         [DataType(DataType.Date)]
         [DisplayName("End Date")]
-        public DateTimeOffset? EndDate { get; set; }
+        public DateTimeOffset EndDate { get; set; }
 
         [DisplayName("Priority")]
         public int? ProjectPriorityId { get; set; }
@@ -37,6 +37,7 @@ namespace BugTrackerDemo.Models
         [DisplayName("File Name")]
         public string ImageFileName { get; set; }
 
+        [DisplayName("Image")]
         public byte[] ImageFileData { get; set; }
 
         [DisplayName("File Extension")]

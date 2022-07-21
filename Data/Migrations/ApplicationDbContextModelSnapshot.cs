@@ -54,7 +54,7 @@ namespace BugTrackerDemo.Data.Migrations
                     b.Property<string>("AvatarFileName")
                         .HasColumnType("text");
 
-                    b.Property<int?>("CompanyId")
+                    b.Property<int>("CompanyId")
                         .HasColumnType("integer");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -257,7 +257,7 @@ namespace BugTrackerDemo.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<DateTimeOffset?>("EndDate")
+                    b.Property<DateTimeOffset>("EndDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("ImageContentType")
@@ -314,6 +314,9 @@ namespace BugTrackerDemo.Data.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("Archived")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("ArchivedByProject")
                         .HasColumnType("boolean");
 
                     b.Property<DateTimeOffset>("Created")
@@ -670,7 +673,9 @@ namespace BugTrackerDemo.Data.Migrations
                 {
                     b.HasOne("BugTrackerDemo.Models.Company", "Company")
                         .WithMany("Members")
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Company");
                 });
